@@ -1,0 +1,116 @@
+{% load static %}
+
+    <!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{% static 'css/create2.css'%}">
+    <style>
+        #loading-animation {
+        display: none;
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 999;
+        /* 스타일링을 추가하여 로딩 애니메이션을 꾸밀 수 있습니다. */
+
+    }
+    #loadding-bg {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* 검은색 배경 및 투명도 설정 */
+        z-index: 998; /* 배경의 우선순위를 높게 설정 */
+    }
+    
+    </style>
+    </head>
+    <body>
+        <div id="loadding-bg"></div>
+        <div id="loading-animation">
+            <img src="{% static 'imgs/loading.gif'%}" alt="로딩 애니메이션">
+        </div>
+        <div class="home">
+    
+            <div class="logo">StoryBuddy</div>
+            <button onClick="location.href='/blog/'" type="button" class="btn btn-warning">이전</button>
+            <div class="main">
+    
+                <h1>창작동화 만들기</h1>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">동화책 제목을 어떻게 할까요?</label>
+                        <input type="text" name="postname" class="form-control" id="exampleFormControlInput1" placeholder="ex)신데렐라, 백설공주 등등">
+                    </div>
+            
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput2" class="form-label">주인공 이름을 어떻게 할까요?</label>
+                        <input type="text" name="char_name" class="form-control" id="exampleFormControlInput2" placeholder="ex)뽀로로,크롱,루피 등등">
+                    </div>
+            
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput3" class="form-label">장르는 어떤 것이었으면 하나요? </label>
+                        <input type="text" name="genre" class="form-control" id="exampleFormControlInput3" placeholder="ex)코믹, 로맨스, 모험, 판타지 등등">
+                    </div>
+            
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput4" class="form-label">더 디테일하게 넣고 싶은 것이 있다면 적어주세요.</label>
+                        <input type="text" name="detail" class="form-control" id="exampleFormControlInput4" placeholder="ex)동물친구도 함께 나왔으면 좋겠어요">
+                    </div>
+    
+                    <p>이야기는 짧게 할까요? 길게 할까요?(길면 오래걸립니다)</p>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="choice" id="flexRadioDefault1" value="option1" checked>
+                        <label class="form-check-label" for="flexRadioDefault1">
+                          짧게 만들기
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="choice" id="flexRadioDefault2" value="option2">
+                        <label class="form-check-label" for="flexRadioDefault2">
+                          길게 만들기( 오래 걸림 )
+                        </label>
+                    </div>
+    
+                
+                   
+                    <div class="page">
+    
+                        <button input type="submit" id="myButton" class="fun-btn" value="글쓰기">글쓰기</button>
+                      
+                    </div>
+                        
+    
+                    
+                </form>
+
+                
+
+            </div>
+    
+        </div>
+        
+    <script>
+
+        document.getElementById('myButton').addEventListener('click', function() {
+            var loadingAnimation = document.getElementById('loading-animation');
+            var overlay = document.getElementById('loadding-bg');
+            
+            loadingAnimation.style.display = 'block';
+            overlay.style.display = 'block';
+        });
+    </script>
+        
+    </body>
+    
+    
+    </html>

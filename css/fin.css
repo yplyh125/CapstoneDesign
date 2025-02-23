@@ -1,0 +1,97 @@
+@font-face {
+    font-family: 'TTWanjudaedunsancheB';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/TTWanjudaedunsancheB.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+font-family: 'KIMM_Bold';
+src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KIMM_Bold.woff2') format('woff2');
+font-weight: 700;
+font-style: normal;
+}
+
+.home{
+    width: 1536px;
+    height: 864px;
+    background-color:#ffc107;
+    
+    position: relative;
+}
+
+.logo {
+    position: absolute;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    left: 640px;
+    top: 30px;
+    font-family: 'TTWanjudaedunsancheB';
+    font-size: 30px;
+    border-radius: 20px  ;
+    background-color: #ffffff;
+    background-color: rgba( 255, 255, 255, 0.7 );
+}
+
+.main {
+    position: absolute;
+    width: 1400px;
+    background-color: #fff5d5;
+    /* border: 10px solid #ff7a1b; */
+    border-radius: 20px;
+    left: 70px;
+    top: 100px;
+    padding: 40px;
+    
+    
+}
+
+/* 수정 */
+.main img{
+    border-radius: 20px;
+    border: solid #ff7f2a;
+}
+.con {
+    float: left;
+}
+
+.con > .imges{
+    float: left;
+    
+}
+
+.con > .s1 {
+    float: left;
+    
+}
+
+.main > h1 > p {
+    font-family: 'TTWanjudaedunsancheB';
+}
+
+.main > p {
+    font-family: 'KIMM_Bold';
+}
+
+.main button {
+    font-family: 'TTWanjudaedunsancheB';
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+}
+
+#button1 {
+    font-family: 'TTWanjudaedunsancheB';
+    position: absolute;
+    bottom: 10px;
+    right: 80px;
+}
+
+.s1{
+    width: 800px;
+    
+}
+
+
+

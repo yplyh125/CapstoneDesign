@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css?family=Abril+Fatface|Open+Sans:400,700&display=swap");
+
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: 'KIMM_Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KIMM_Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    }
+
+@font-face {
+        font-family: 'TTWanjudaedunsancheB';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/TTWanjudaedunsancheB.woff2') format('woff2');
+        font-weight: 700;
+        font-style: normal;
+    }
+
+.main{
+    /* background-color: #5b8dbc; */
+    background: url("../imgs/snow_bg.png");
+    width: 1536px;
+    height: 864px;
+    background-size: cover;
+}
+
+.title img{
+    position: absolute;
+    width: 150px;
+    height: 70px;
+    border: 6px solid rgb(255, 255, 255);
+    border-radius: 10px;
+    margin-top: 20px;
+    left: 85px; 
+    top: 30px;
+}
+.title{
+    display: flex;
+    justify-content: center;
+    /* margin-top: 30px; */
+    margin-bottom: 15px;
+   
+}
+.mid{
+    display: flex;
+    justify-content: center;
+   
+}
+
+.mid > video{
+    border: 9px solid white;
+    border-radius: 15px;
+    overflow: hidden;
+}
+.logo{
+    font-family: 'Abril Fatface'; 
+    color: aliceblue;
+    font-size: 25px;
+    text-decoration: none;
+  }
+
+.footer {
+    display: flex;
+    justify-content: right;
+    position: relative;
+    top: -580px;
+    right: 130px;
+    font-family: 'KIMM_Bold';
+}
+
+.layerPop { 
+    position: absolute; 
+    top: 30%; 
+    left: 35%; 
+    width: 500px; 
+    height: 200px; 
+    
+    border-radius: 10px; 
+    padding: 20px; 
+    background-color:rgb(252, 173, 28); 
+    z-index: 100; 
+    display: none;
+    font-family: 'TTWanjudaedunsancheB';
+}
+
+
+
+.layerPop div {
+    margin-top: 20px; 
+    font-size: 30px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+}
+
+.layerPop .box1 { 
+    position: absolute; 
+    right: 10px; 
+    bottom: 10px; 
+    border-radius: 10px; 
+    border: 3px solid rgb(255, 255, 255); 
+    padding: 5px 10px; 
+    background-color: rgb(254, 254, 254); 
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+.layerPop .box2 { 
+    position: absolute; 
+    left: 10px; 
+    bottom: 10px; 
+    border-radius: 10px; 
+    border: 3px solid rgb(255, 2, 2); 
+    padding: 5px 10px; 
+    background-color: rgb(251, 15, 15); 
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.bg {
+    position: absolute; 
+    top: 0; 
+    left: 0;  
+    background-color: rgba(0, 0, 0, 0.5); 
+    width: 100%; 
+    height: 100%; 
+    display: none;}

@@ -1,0 +1,187 @@
+@import url(//fonts.googleapis.com/css?family=Lato:300:400);
+@font-face{
+  font-family:'bitbit';
+  src:url('//cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff'),url('//cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff2') ;
+} 
+/* 위에는 약간 게임글씨체 */
+@font-face {
+  font-family: 'GoryeongStrawberry';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/GoryeongStrawberry.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+/* 위에는 딸기 글씨체 */
+@font-face {
+  font-family: 'ONE-Mobile-POP';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  margin:0;
+}
+
+h1 {
+  font-family: 'Lato', sans-serif;
+  font-weight:300;
+  letter-spacing: 2px;
+  font-size:48px;
+}
+p {
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 1px;
+  font-size:14px;
+  color: #333333;
+}
+
+.header {
+  position:relative;
+  text-align:center;
+  background: linear-gradient(60deg, rgba(183,131,214) 0%, rgba(61,37,255) 100%);
+  color:white;
+}
+.logo {
+  width:50px;
+  fill:white;
+  padding-right:15px;
+  display:inline-block;
+  vertical-align: middle;
+}
+
+.inner-header {
+  height:65vh;
+  width:100%;
+  margin: 0;
+  padding: 0;
+}
+
+.flex { /*Flexbox for containers*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.waves {
+  position:relative;
+  width: 100%;
+  height:15vh;
+  margin-bottom:-7px; /*Fix for safari gap*/
+  min-height:100px;
+  max-height:150px;
+}
+
+.content {
+  position:relative;
+  height:20vh;
+  text-align:center;
+  background-color: white;
+}
+
+/* 수정 */
+.content p {
+  font-family: 'ONE-Mobile-POP';
+}
+
+/* Animation */
+
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+}
+.parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+}
+.parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+.parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+.parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+@keyframes move-forever {
+  0% {
+   transform: translate3d(-90px,0,0);
+  }
+  100% { 
+    transform: translate3d(85px,0,0);
+  }
+}
+/*Shrinking for mobile*/
+@media (max-width: 768px) {
+  .waves {
+    height:40px;
+    min-height:40px;
+  }
+  .content {
+    height:30vh;
+  }
+  h1 {
+    font-size:24px;
+  }
+}
+
+
+
+.home {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    color: white;
+    display: flex; /* flex or none */
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    font-family: 'ONE-Mobile-POP';
+    opacity: 1;
+    transition: all 0.4s ease-in 0.2s;
+  }
+  .home h1 {
+    margin-bottom: 80px;
+    color: white;
+    text-align: center;
+    font-size: 50px;
+    font-family: 'ONE-Mobile-POP'; 
+  }
+  .home h1 span {
+    color: white;
+    display: block;
+    font-size: 2.5em;
+    font-family: 'ONE-Mobile-POP', cursive;
+  }
+  .home p {
+    margin-top: 40px;
+   
+  }
+  .home p a {
+    color: white;
+  }
+
+
+  /* 버튼--------------------- */
+  .btn {
+    background: none;
+    border: 2px solid white;
+    border-radius: 150px;
+    align-self: center;
+    width: 400px;
+    height: 100px;
+    padding: 8px 16px;
+    margin: 10px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out 0.1s;
+    font-family: 'ONE-Mobile-POP';
+    font-size: 50px;
+  }
+  .btn:hover {
+    background: white;
+    color: rgb(55, 127, 223);
+  }

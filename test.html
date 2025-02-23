@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/create.css">
+</head>
+
+<body>
+    <div class="home">
+        <div class="logo" onClick="location.href='main_k.html'">StoryBuddy</div>
+        <div class="main">
+            <!-- <h1>창작동화 만들기</h1> -->
+            <form method="POST" id="storyForm">
+
+                <!-- Step 1: 동화책 제목 -->
+                <div class="step" id="step1">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">동화책 제목을 어떻게 할까요?</label>
+                        <input type="text" name="postname" class="form-control" id="exampleFormControlInput1" placeholder="ex)신데렐라, 백설공주 등등">
+                    </div>
+                    <button type="button" class="fun-btn" onclick="nextStep(2)"><h1 >다음</h1></button>
+                </div>
+
+                <!-- Step 2: 주인공 이름 -->
+                <div class="step" id="step2" style="display: none;">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput2" class="form-label">주인공 이름을 어떻게 할까요?</label>
+                        <input type="text" name="postname1" class="form-control" id="exampleFormControlInput2" placeholder="ex)뽀로로,크롱,루피 등등">
+                    </div>
+                    <button type="button" class="fun-btn" onclick="nextStep(3)">다음</button>
+                </div>
+
+                <!-- Step 3: 장르 -->
+                <div class="step" id="step3" style="display: none;">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput3" class="form-label">장르는 어떤 것이었으면 하나요? </label>
+                        <input type="text" name="postname2" class="form-control" id="exampleFormControlInput3" placeholder="ex)코믹, 로맨스, 모험, 판타지 등등">
+                    </div>
+                    <button type="button" class="fun-btn" onclick="nextStep(4)">다음</button>
+                </div>
+
+                <!-- Step 4: 디테일 -->
+                <div class="step" id="step4" style="display: none;">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput4" class="form-label">더 디테일하게 넣고 싶은 것이 있다면 적어주세요.</label>
+                        <input type="text" name="postname3" class="form-control" id="exampleFormControlInput4" placeholder="ex)동물친구도 함께 나왔으면 좋겠어요">
+                    </div>
+                    <button type="button" class="fun-btn" onclick="nextStep(5)">다음</button>
+                </div>
+                <!-- step 5 -->
+                <div class="step" id="step5" style="display: none;">
+                    <p>이야기는 짧게 할까요? 길게 할까요?(길면 오래걸립니다)</p>
+                    <div class="em"></div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            짧게 만들기
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio"  name="flexRadioDefault" id="flexRadioDefault2">
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            길게 만들기( 오래 걸림 )
+                        </label>
+                    </div>
+                    <div class="page">
+                        <button type="button" class="fun-btn" onclick="validateAndSubmit()">글쓰기</button>
+                    </div>
+                </div>
+
+
+
+                <!-- Display entered values -->
+                <div id="displayValues" style="display: none;">
+                    <!-- <h3>입력한 값:</h3> -->
+                    <p id="displayTitle"></p>
+                    <p id="displayCharacter"></p>
+                    <p id="displayGenre"></p>
+                    <p id="displayDetails"></p>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let formData = {};
+    
+        function nextStep(step) {
+            // Store the entered values
+            formData['postname'] = document.getElementById('exampleFormControlInput1').value;
+            formData['postname1'] = document.getElementById('exampleFormControlInput2').value;
+            formData['postname2'] = document.getElementById('exampleFormControlInput3').value;
+            formData['postname3'] = document.getElementById('exampleFormControlInput4').value;
+            formData['postname4'] = document.getElementById('exampleFormControlInput4').value;
+
+            console.log(formData); // Add this line to check the values
+
+            // Display the entered values for the current step
+            displayEnteredValues(step);
+
+            // Hide the current step
+            document.getElementById('step' + (step - 1)).style.display = 'none';
+
+            // Show the next step
+            if (step <= 5) {
+                document.getElementById('step' + step).style.display = 'block';
+            } else {
+                // If the last step, display the entered values
+                displayEnteredValues(step);
+            }
+        }
+
+    
+        function validateAndSubmit() {
+            // You can add validation logic here if needed
+    
+            // Move to the next step (in this case, the last step)
+            nextStep(6);
+        }
+    
+        function displayEnteredValues(step) {
+            // Display the entered values based on the current step
+            document.getElementById('displayValues').style.display = 'block';
+    
+            switch (step) {
+                case 1:
+                    document.getElementById('displayTitle').innerText = '동화책 제목: ' + formData['postname'];
+                    document.getElementById('displayCharacter').innerText = ''; // Hide other fields
+                    document.getElementById('displayGenre').innerText = '';
+                    document.getElementById('displayDetails').innerText = '';
+                    break;
+                case 2:
+                    document.getElementById('displayTitle').innerText = '';
+                    // document.getElementById('displayCharacter').innerText = '주인공 이름: ' + formData['postname1'];
+                    document.getElementById('displayGenre').innerText = '';
+                    document.getElementById('displayDetails').innerText = '';
+                    break;
+                case 3:
+                    document.getElementById('displayTitle').innerText = '';
+                    document.getElementById('displayCharacter').innerText = '';
+                    // document.getElementById('displayGenre').innerText = '장르: ' + formData['postname2'];
+                    document.getElementById('displayDetails').innerText = '';
+                    break;
+                case 4:
+                    document.getElementById('displayTitle').innerText = '';
+                    document.getElementById('displayCharacter').innerText = '';
+                    document.getElementById('displayGenre').innerText = '';
+                    // document.getElementById('displayDetails').innerText = '세부사항: ' + formData['postname3'];
+                    break;
+
+                case 5:
+                    document.getElementById('displayTitle').innerText = '';
+                    document.getElementById('displayCharacter').innerText = '';
+                    document.getElementById('displayGenre').innerText = '';
+                    // document.getElementById('displayDetails').innerText = '세부사항: ' + formData['postname3'];
+                        break;
+
+                case 6:
+                    // Display all entered values on the final step
+                    document.getElementById('displayTitle').innerText = '동화책 제목: ' + formData['postname'];
+                    document.getElementById('displayCharacter').innerText = '주인공 이름: ' + formData['postname1'];
+                    document.getElementById('displayGenre').innerText = '장르: ' + formData['postname2'];
+                    document.getElementById('displayDetails').innerText = '세부사항: ' + formData['postname3'];
+                    break;
+                default:
+                    break;
+            }
+        }
+    </script>
+    
+
+
+</body>
+
+</html>

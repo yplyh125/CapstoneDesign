@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>chatGPT API</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <!-- jQuery 라이브러리를 로드합니다. -->
+  <style>
+    /* CSS 스타일링 정의 */
+    #loading {
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      position: fixed;
+      display: block;
+      opacity: 0.6;
+      background: #e4e4e4;
+      z-index: 99;
+      text-align: center;
+    }
+
+    #loading>img {
+      position: absolute;
+      top: 40%;
+      left: 45%;
+      z-index: 100;
+    }
+
+    #loading>p {
+      position: absolute;
+      top: 57%;
+      left: 43%;
+      z-index: 101;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark" aria-label="Fourth navbar example">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Expand at md</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExample04">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form role="search">
+          <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <h1>chatGPT API</h1>
+  <div>무엇이든 질문해보세요 !!</div>
+  <!-- 웹 페이지의 제목과 간단한 설명을 표시합니다. -->
+
+  <input type="text" id="keywords" name="keywords" required />
+  <button onclick="chatGPT()">입력</button>
+  <!-- 입력 필드와 "입력" 버튼을 생성합니다. 버튼을 클릭하면 chatGPT() 함수가 호출됩니다. -->
+
+  <div id="result"></div>
+  <!-- API 응답을 표시할 div 엘리먼트입니다. -->
+
+  <!-- <div id="loading">
+    <img src="https://studentrights.sen.go.kr/images/common/loading.gif">
+  </div> -->
+  <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status" id="loading">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  <!-- 로딩 중 화면을 나타내는 엘리먼트입니다. 초기에는 숨겨져 있습니다. -->
+
+  <div>
+    <h3>주인공의 이름은 어떻게 정할까요?</h3>
+  <input class="form-control form-control-sm" type="text" placeholder="ex. 뽀로로, 미키마우스, 뿡뿡이" aria-label=".form-control-sm example" id="character" name="character" required>
+    
+    <button onclick="">다음</button>
+  </div>
+  <!-- 이름 정하기 -->
+
+  <div>
+    <h3>성별은 어떻게 할까요?</h3>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+      <label class="form-check-label" for="flexRadioDefault1">
+        남자
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+      <label class="form-check-label" for="flexRadioDefault2">
+        여자
+      </label>
+    </div>
+    <button onclick="">다음</button>
+  </div>
+<!-- 성별물어보기 -->
+
+  <div>
+    <h3>장르는 어떻게 하고 싶으신가요?</h3>
+
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      $('#loading').hide();
+    });
+    // 문서가 로드된 후에 로딩 엘리먼트를 숨깁니다.
+
+    function chatGPT() {
+      const api_key = "openAIkey"  // <- API KEY 입력
+      const keywords = document.getElementById('keywords').value
+      // 사용자 입력 키워드를 가져옵니다.
+
+      $('#loading').show();
+      // 로딩 엘리먼트를 표시합니다.
+
+      const messages = [
+        { role: 'system', content: 'You are a helpful assistant.' },
+        { role: 'user', content: keywords },
+      ]
+      // 채팅 메시지를 배열로 정의합니다. 시스템 메시지와 사용자 메시지가 포함됩니다.
+
+      const data = {
+        model: 'gpt-3.5-turbo',
+        temperature: 0.5,
+        n: 1,
+        messages: messages,
+      }
+      // API에 전달할 데이터를 정의합니다.
+
+      $.ajax({
+        url: "https://api.openai.com/v1/chat/completions",
+        method: 'POST',
+        headers: {
+          Authorization: "Bearer " + api_key,
+          'Content-Type': 'application/json',
+        },
+        data: JSON.stringify(data),
+      }).then(function (response) {
+        $('#loading').hide();
+        // API 요청 후 로딩 엘리먼트를 숨깁니다.
+
+        console.log(response)
+        // API 응답을 콘솔에 출력합니다.
+
+        let result = document.getElementById('result')
+        let pre = document.createElement('pre')
+        pre.innerHTML = "\n\n" + response.choices[0].message.content
+        // API 응답 메시지를 div 엘리먼트에 추가합니다.
+
+        result.appendChild(pre)
+
+        document.getElementById('keywords').value = ''
+      });
+    }
+    // chatGPT() 함수는 사용자 입력을 API에 보내고 응답을 표시하는 역할을 합니다.
+  </script>
+</body>
+</html>
